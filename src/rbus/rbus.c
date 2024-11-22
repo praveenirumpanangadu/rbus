@@ -6122,6 +6122,8 @@ rbusError_t rbus_closeSession(rbusHandle_t handle, uint32_t sessionId)
             RBUSLOG_ERROR("Failed to communicated with session manager.");
         }
         rbusValue_Release(inputSession);
+	rbusObject_Release(inParams);
+        rbusObject_Release(outParams);
     }
     else
     {
