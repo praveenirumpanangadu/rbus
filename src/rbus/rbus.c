@@ -6066,6 +6066,7 @@ rbusError_t rbus_getCurrentSession(rbusHandle_t handle, uint32_t *pSessionId)
                 else
                     RBUSLOG_ERROR("Malformed response from session manager.\n");
             }
+		rbusObject_Release(outParams);
         }
         else
         {
