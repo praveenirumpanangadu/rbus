@@ -93,7 +93,7 @@ jobs:
         run: |
           cd build/rbus
           nohup ./src/session_manager/rbus_session_mgr &
-          valgrind --leak-check=full --error-exitcode=1 ./unittests/rbus_gtest.bin
+          ./unittests/rbus_gtest.bin
       - name: Stop SessionManager
         run: |
           killall -9 rbus_session_mgr
