@@ -44,6 +44,7 @@ void testOutParams(rbusObject_t outParams, char const* name, rbusError_t error)
     rbusObject_fwrite(outParams, 1, stdout);
 
     EXPECT_EQ(error, RBUS_ERROR_INVALID_INPUT);
+    rbusValue_Release(val);
 }
 
 static int exec_rbus_get_test(rbusHandle_t handle, const char *param)
