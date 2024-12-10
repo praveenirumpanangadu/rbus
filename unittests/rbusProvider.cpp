@@ -405,6 +405,15 @@ int rbusProvider(rbusGtest_t test, pid_t pid, int *consumer_status)
   wait_ret = waitpid(pid, consumer_status, 0);
   EXPECT_EQ(wait_ret,pid);
   printf("%s: rbusProvider2, %d: %d :%d\n",__func__,wait_ret,pid,*consumer_status);
+if (WIFEXITED(*consumer_status)) {
+    int exit_status = WEXITSTATUS(*consumer_status);
+    printf("Child exited with status %d\n", exit_status);
+} else if (WIFSIGNALED(*consumer_status)) {
+    printf("Child was terminated by signal %d\n", WTERMSIG(*consumer_status));
+} else {
+    printf("Child exited with unknown status\n");
+}
+    *consumer_status=exit_status;
   if(wait_ret != pid) printf("%s: waitpid() failed %d: %s\n",__func__,errno,strerror(errno));
   rc = (wait_ret != pid) ? RBUS_ERROR_BUS_ERROR : RBUS_ERROR_SUCCESS;
 
