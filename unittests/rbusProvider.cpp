@@ -349,7 +349,7 @@ int rbusProvider(rbusGtest_t test, pid_t pid, int *consumer_status)
   rbusHandle_t handle;
   int rc = RBUS_ERROR_BUS_ERROR, wait_ret = -1;
   char *componentName = NULL;
-
+     int exit_status=0;
   rbusDataElement_t dataElements[] = {
     {(char *)"Device.rbusProvider.Param1", RBUS_ELEMENT_TYPE_PROPERTY, {getVCHandler, NULL, NULL, NULL, NULL, NULL}},
     {(char *)"Device.rbusProvider.Param2", RBUS_ELEMENT_TYPE_PROPERTY, {getVCHandler, setHandler, NULL, NULL, NULL, NULL}},
@@ -405,7 +405,7 @@ int rbusProvider(rbusGtest_t test, pid_t pid, int *consumer_status)
   wait_ret = waitpid(pid, consumer_status, 0);
   EXPECT_EQ(wait_ret,pid);
   printf("%s: rbusProvider2, %d: %d :%d\n",__func__,wait_ret,pid,*consumer_status);
-     int exit_status=0;
+
 if (WIFEXITED(*consumer_status)) {
      exit_status = WEXITSTATUS(*consumer_status);
     printf("Child exited with status %d\n", exit_status);
