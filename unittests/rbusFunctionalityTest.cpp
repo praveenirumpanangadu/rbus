@@ -57,6 +57,7 @@ static void exec_func_test(rbusGtest_t test)
     int ret = 0;
     usleep(550000);
     ret = rbusConsumer(test, 0, runtime);
+     usleep(550000);
     exit(ret);
   } else {
     int ret = 0;
