@@ -317,7 +317,7 @@ int rbusConsumer(rbusGtest_t test, pid_t pid, int runtime)
   printf("%s: start \n",__func__);
   consumerName = strdup(__func__);
   rc = rbus_open(&handle, consumerName);
-  printf("%s: started \n",__func__,);
+  printf("%s: started \n",__func__);
   EXPECT_EQ(rc,RBUS_ERROR_SUCCESS);
   if(RBUS_ERROR_SUCCESS != rc) goto exit;
 
