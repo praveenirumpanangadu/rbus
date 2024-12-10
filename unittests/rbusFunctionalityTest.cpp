@@ -48,14 +48,14 @@ static void exec_func_test(rbusGtest_t test)
     }
     default:
     {
-      runtime = 13;
+      runtime = 20;
       break;
     }
   }
   pid_t pid = fork();
   if (0 == pid) {
     int ret = 0;
-    sleep(10);
+    sleep(1);
     ret = rbusConsumer(test, 0, runtime);
      sleep(2);
     exit(ret);
