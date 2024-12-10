@@ -316,10 +316,13 @@ int rbusConsumer(rbusGtest_t test, pid_t pid, int runtime)
   printf("%s: start \n",__func__);
   consumerName = strdup(__func__);
   rc = rbus_open(&handle, consumerName);
+  printf("%s: started \n",__func__,);
   EXPECT_EQ(rc,RBUS_ERROR_SUCCESS);
   if(RBUS_ERROR_SUCCESS != rc) goto exit;
 
   memset(gtest_err,0,sizeof(gtest_err));
+  printf("\r\n%s: runtime: %d\n",__func__,runtime);
+  printf("\r\n%s: test: %d\n",__func__,test);
   switch(test)
   {
     case RBUS_GTEST_FILTER1:
@@ -1004,9 +1007,11 @@ int rbusConsumer(rbusGtest_t test, pid_t pid, int runtime)
   }
 
   rc |= rbus_close(handle);
+  printf("%s: exit_test :%d\n",__func__,rc);
+
 exit:
   free(consumerName);
 
-  printf("%s: exit \n",__func__);
+  printf("%s: exit :%d\n",__func__,rc);
   return rc;
 }
