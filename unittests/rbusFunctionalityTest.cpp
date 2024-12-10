@@ -48,7 +48,7 @@ static void exec_func_test(rbusGtest_t test)
     }
     default:
     {
-      runtime = 3;
+      runtime = 13;
       break;
     }
   }
