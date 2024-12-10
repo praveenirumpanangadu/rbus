@@ -55,7 +55,7 @@ static void exec_func_test(rbusGtest_t test)
   pid_t pid = fork();
   if (0 == pid) {
     int ret = 0;
-    sleep(1);
+    sleep(10);
     ret = rbusConsumer(test, 0, runtime);
      sleep(2);
     exit(ret);
