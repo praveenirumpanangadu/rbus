@@ -57,7 +57,7 @@ static void exec_func_test(rbusGtest_t test)
     int ret = 0;
     sleep(1);
     ret = rbusConsumer(test, 0, runtime);
-     sleep(2);
+	 printf("rbusConsumer ret=%d \n",ret);
     exit(ret);
   } else {
     int ret = 0;
