@@ -401,10 +401,10 @@ int rbusProvider(rbusGtest_t test, pid_t pid, int *consumer_status)
     rc |= rbusTable_addRow(handle, "Device.rbusProvider.PartialPath.", NULL, NULL);
     EXPECT_EQ(rc,RBUS_ERROR_SUCCESS);
   }
-
+  printf("%s: rbusProvider1, %d: %d :%d\n",__func__,wait_ret,pid,*consumer_status);
   wait_ret = waitpid(pid, consumer_status, 0);
   EXPECT_EQ(wait_ret,pid);
-  printf("%s: rbusProvider, %d: %d :%d\n",__func__,wait_ret,pid,*consumer_status);
+  printf("%s: rbusProvider2, %d: %d :%d\n",__func__,wait_ret,pid,*consumer_status);
   if(wait_ret != pid) printf("%s: waitpid() failed %d: %s\n",__func__,errno,strerror(errno));
   rc = (wait_ret != pid) ? RBUS_ERROR_BUS_ERROR : RBUS_ERROR_SUCCESS;
 
