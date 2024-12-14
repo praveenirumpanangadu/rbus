@@ -100,8 +100,8 @@ static void exec_func_test(rbusGtest_t test)
         break;
     }
     printf("Consumer result %d\n",WEXITSTATUS(consumer_status));
-
-    if((WIFSIGNALED(consumer_status)) && (WTERMSIG(consumer_status) != SIGUSR1))
+    /*if((WIFSIGNALED(consumer_status)) && (WTERMSIG(consumer_status) != SIGUSR1))*/
+    if((WIFSIGNALED(consumer_status)))
     {
       printf("/******************************************/\n");
       printf("/******************************************/\n");
