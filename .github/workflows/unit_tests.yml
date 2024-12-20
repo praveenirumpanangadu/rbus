@@ -96,7 +96,7 @@ jobs:
         run: |
           cd build/rbus
           nohup ./src/session_manager/rbus_session_mgr &
-          valgrind --leak-check=full --error-exitcode=1 --track-origins=yes --trace-children=yes --trace-signals=yes ./unittests/rbus_gtest.bin
+          valgrind --leak-check=full --error-exitcode=1 --track-origins=yes --trace-children=yes --child-silent-after-fork=yes --trace-signals=yes ./unittests/rbus_gtest.bin
       - name: Stop SessionManager
         run: |
           killall -9 rbus_session_mgr
