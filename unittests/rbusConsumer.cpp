@@ -336,9 +336,7 @@ int rbusConsumer(rbusGtest_t test, pid_t pid, int runtime)
         rc = rbusEvent_Subscribe(handle, event_param, eventReceiveHandler, user_data, 0);
         EXPECT_EQ(rc,RBUS_ERROR_SUCCESS);
 
-        sleep(runtime);
-
-        rbusEvent_Unsubscribe(handle, event_param);
+         rbusEvent_Unsubscribe(handle, event_param);
       }
       break;
     case RBUS_GTEST_FILTER2:
