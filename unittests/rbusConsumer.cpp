@@ -318,11 +318,13 @@ int rbusConsumer(rbusGtest_t test, pid_t pid, int runtime)
   consumerName = strdup(__func__);
   rc = rbus_open(&handle, consumerName);
   printf("%s: started \n",__func__);
+	
   EXPECT_EQ(rc,RBUS_ERROR_SUCCESS);
   if(RBUS_ERROR_SUCCESS != rc) goto exit;
 
   memset(gtest_err,0,sizeof(gtest_err));
   printf("\r\n%s: runtime: %d\n",__func__,runtime);
+  sleep(runtime);	
   printf("\r\n%s: test: %d\n",__func__,test);
   switch(test)
   {
@@ -735,12 +737,12 @@ int rbusConsumer(rbusGtest_t test, pid_t pid, int runtime)
       break;
     case RBUS_GTEST_GET_EXT1:
       {
+	      
         rbusProperty_t props = NULL;
         rbusProperty_t next;
         int actualCount = 0;
         rbusValue_t actualValue;
         const char *params = "Device.rbusProvider.PartialPath.";
-
         isElementPresent(handle, params);
 
         rc = rbus_getExt(handle, 1, &params, &actualCount, &props);
