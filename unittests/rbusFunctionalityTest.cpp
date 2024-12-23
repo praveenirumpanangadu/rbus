@@ -53,7 +53,11 @@ static void exec_func_test(rbusGtest_t test)
     }
   }
   pid_t pid = fork();
-  if (0 == pid) {
+if (pid == -1) {
+    perror("fork failed");
+    exit(EXIT_FAILURE);
+}
+  else if  (0 == pid) {
     int ret = 0;
     usleep(50000);
     ret = rbusConsumer(test, 0, runtime);
