@@ -65,7 +65,7 @@ if (pid == -1) {
     exit(ret);
   } else {
     int ret = 0;
-    int consumer_status;
+    int consumer_status=0;
     int expected_consumer_status = RBUS_ERROR_SUCCESS;
 printf("parent process started\n");
     /* Run the appropriate provider */
