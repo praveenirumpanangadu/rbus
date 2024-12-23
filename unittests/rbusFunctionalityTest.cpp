@@ -79,6 +79,8 @@ static void exec_func_test(rbusGtest_t test)
       case RBUS_GTEST_GET22:
       case RBUS_GTEST_GET23:
       case RBUS_GTEST_GET24:
+	printf("RBUS_GTEST_GET13-24\n");
+
         ret = rbuscoreProvider(test, pid, &consumer_status);
         break;
       case RBUS_GTEST_ASYNC_SUB5:
@@ -96,6 +98,7 @@ static void exec_func_test(rbusGtest_t test)
         }
         break;
       default:
+	printf("RBUS_GTEST_default\n");
         ret = rbusProvider(test, pid, &consumer_status);
         break;
     }
