@@ -63,7 +63,7 @@ static void exec_func_test(rbusGtest_t test)
     int ret = 0;
     int consumer_status;
     int expected_consumer_status = RBUS_ERROR_SUCCESS;
-
+printf("parent process started\n");
     /* Run the appropriate provider */
     switch(test)
     {
