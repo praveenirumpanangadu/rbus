@@ -346,7 +346,7 @@ static rbusError_t methodHandler(rbusHandle_t handle, char const* methodName, rb
 
 int rbusProvider(rbusGtest_t test, pid_t pid, int *consumer_status)
 {
-  rbusHandle_t handle;
+  rbusHandle_t handle=NULL;
   int rc = RBUS_ERROR_BUS_ERROR, wait_ret = -1;
   char *componentName = NULL;
      int exit_status=0;
@@ -427,8 +427,11 @@ if (WIFEXITED(*consumer_status)) {
 
   rc |= rbus_unregDataElements(handle, elements_count, dataElements);
   EXPECT_EQ(rc,RBUS_ERROR_SUCCESS);
+  printf("%s: going to exit1\n",__func__);
 
 exit1:
+  printf("%s: exit1\n",__func__);
+
   rc |= rbus_close(handle);
 
 exit2:
